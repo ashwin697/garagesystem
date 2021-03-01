@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Appointement-Book{% endblock %}
+
+
+{% block body %}
+
+
+<style>
+  h2,
+  h3,
+  label {
+    color: yellow;
+    font-weight: bold;
+  }
+</style>
+
+<div class="parallax"
+  style='background-image :linear-gradient(rgba(240, 241, 224, 0.2),#091801),url("static/images/bus3.jpg");'>
+
+
+
+
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong>{{message}}
+    <button type="button" class="close rounded" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+
+
+  <div class="container my-2">
+    <div class="row justify-content-center">
+      <div class="title col-12 col-lg-8">
+        <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-4">
+          Book Appointement
+        </h2>
+        <h3>To Use our Service</h3>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="media-container-column col-lg-8" data-form-type="formoid">
+        <hr />
+
+        <form class="mbr-form" action="/service" method="post" data-form-title="Mobirise Form">
+          {% csrf_token %}
+          <div class="row row-sm-offset">
+            <div class="col-md-6 multi-horizontal" data-for="cname">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="cname-form1-4">Full Name</label>
+                <input type="text" class="form-control" name="cname" data-form-field="cname" required
+                  placeholder="Enter your Fullname" id="cname" />
+              </div>
+            </div>
+            <div class="col-md-6 multi-horizontal" data-for="caddress">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="caddress-form1-4">Address</label>
+                <input type="text" class="form-control" name="caddress" data-form-field="caddress" required
+                  placeholder="Your Address" id="caddress" />
+              </div>
+            </div>
+            <div class="col-md-6 multi-horizontal" data-for="cpin">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="cpin-form1-4">Pin code</label>
+                <input type="number" class="form-control" name="cpin" data-form-field="cpin" required
+                  placeholder="Pin code" id="cpin" />
+              </div>
+            </div>
+            <div class="col-md-6 multi-horizontal" data-for="cemail">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="cemail-form1-4">Email</label>
+                <input type="email" class="form-control" name="cemail" data-form-field="useremail" required
+                  placeholder="Email" id="cemail" />
+              </div>
+            </div>
+            <div class="col-md-6 multi-horizontal" data-for="cphone">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="cphone-form1-4">Phone no.</label>
+                <input type="phone" class="form-control" name="cphone" data-form-field="cphone" required
+                  placeholder="Your Phone no" id="cphone" />
+              </div>
+            </div>
+
+            <div class="col-md-6 multi-horizontal" data-for="cbusno">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="cbusno-form1-4">Vehicle no</label>
+                <input type="text" class="form-control" name="cbusno" data-form-field="cbusno" required
+                  placeholder=" Vehicle no" id="cbusno" />
+              </div>
+            </div>
+
+            <div class="col-md-12 multi-horizontal" data-for="cbusproblem">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="cbusno-form1-4"> Vehicle Issue</label>
+                <textarea type="text" class="form-control" name="cbusproblem" data-form-field="cbusno" required
+                  placeholder=" Specify your problem" id="cbusproblem"
+                  style="margin-top: 0px; margin-bottom: 0px; height: 149px;"></textarea>
+              </div>
+            </div>
+
+            <div class="justify-content-center">
+              {% if user.is_authenticated %}
+
+              <span class="input-group-btn"><button type="submit"
+                  class="btn btn-form btn-outline-warning display-4 my-3 mx-3">
+                  Book Appointement
+                </button></span>
+              {% endif %}
+
+            </div>
+          </div>
+        </form>
+        {% if not user.is_authenticated %}
+        <div class="justify-content-center">
+
+          <a href="/login"><span class="input-group-btn"><button
+                class="btn btn-form btn-outline-warning display-4 my-3 mx-3">
+                Book Appointement
+              </button></span></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

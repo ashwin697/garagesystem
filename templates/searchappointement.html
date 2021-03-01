@@ -1,0 +1,78 @@
+{% extends 'base.html' %} 
+{% block title %}Search-Appointement{% endblock %}
+
+{% block body %}
+
+<div class="parallax" style='background-image :url("static/images/table.jpg");'>
+
+<form method='get' action="/search" class=" my-2 my-lg-0">
+      <input class="form-control mr-sm-2" id="query" name="query" type="search" placeholder="Search records By Name , appointement no , userid , email.." aria-label="Search">
+    
+    </form> 
+
+
+  <hr>
+  {% if detail|length < 1 %}
+  <table class="table table-responsive-lg table-sm table-responsive-xl table-responsive-md table-hover table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">sr.no</th>
+      <th scope="col">Name</th>
+      <th scope="col">phone no</th>
+      <th scope="col">Email</th>
+      <th scope="col">UserId</th>
+      <th scope="col">Issue</th>
+      <th scope="col">Vehicle no</th>      
+      <th scope="col">Address</th>      
+      <th scope="col">Pin code</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  </table>
+  <hr>
+  <hr>
+  <h1>No Data Found </h1>
+  <hr>
+  <hr>
+
+  
+  {% else %}
+
+<div>
+<table class="table table-responsive-lg table-sm table-responsive-xl table-responsive-md table-hover table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">sr.no</th>
+      <th scope="col">Name</th>
+      <th scope="col">phone no</th>
+      <th scope="col">Email</th>
+      <th scope="col">UserId</th>
+      <th scope="col">Issue</th>
+      <th scope="col">Vehicle no</th>      
+      <th scope="col">Address</th>      
+      <th scope="col">Pin code</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for details in detail %}
+    <tr>
+      <th scope="row">{{details.apt_id}}</th>
+      <td >{{details.name}}</td>
+      <td>{{details.phone}}</td>
+      <td class="text-break">{{details.email}}</td>
+      <td>{{details.user}}</td>
+      <td class="text-break">{{details.issue}}</td>
+      <td>{{details.busno}}</td>
+      <td class="text-break">{{details.address}}</td>
+      <td>{{details.pin_code}}</td>
+      <td>{{details.mdate}}</td>
+      
+    </tr>
+    {% endfor %}
+     </tbody>
+</table>
+ {% endif %}
+</div>
+</div>
+{% endblock %}

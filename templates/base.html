@@ -1,0 +1,219 @@
+<!DOCTYPE html
+
+<html  lang="en">
+  
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+
+    body{
+      width: 100%;
+      height: 80%;
+    }
+
+     .navbar-brand, .nav-link{
+        color: honeydew;
+      }
+      .navbar-toggler-icon{
+        background: rgb(245, 108, 28);
+      
+      }
+      .footer {
+    color: #333333;
+    font-size: 14px;
+    font-family: 'Rubik', sans-serif;
+    line-height: 1.80857;
+}
+ul#social li{
+  display: inline;
+  
+}
+
+ul#links li{
+  text-decoration-line: none;
+}
+.text{
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+.parallax {
+  
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+    </style>
+
+<title>{% block title %} {% endblock %}</title>
+
+{% block js%} {% endblock %}
+
+  </head>
+  
+  <body class="justify-content-center">
+    {% load static %}
+    
+    <nav class="navbar navbar-expand-lg   " style="background: cadetblue;">
+  <a class="navbar-brand btn-outline-warning btn btn-secondary" href="/">Daddy's Garage</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {% block home %}{% endblock %}">
+        <a class="nav-link btn-outline-warning" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item {% block service %}{% endblock %}">
+        <a class="nav-link btn-outline-warning" href="/serviceabout">Services</a>
+      </li>
+      <li class="nav-item {% block contact %}{% endblock %}">
+        <a class="nav-link btn-outline-warning" href="/contact">Contact Us</a>
+      <li class="nav-item {% block about %}{% endblock %}">
+        <a class="nav-link btn-outline-warning" href="/about">About Us</a>
+      </li>
+        {% if user.is_staff %}
+      <li class="nav-item {% block admin %}{% endblock %} dropdown">
+        <a class="nav-link btn-outline-warning dropdown-toggle" href="/admin" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Supervisor Point
+        </a>
+        <div class="dropdown-menu btn-outline-warning" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item btn-outline-warning" href="/billgeneration">Generate Invoice</a>
+          <a class="dropdown-item btn-outline-warning" href="/appointement">Appointements</a>
+          <a class="dropdown-item btn-outline-warning" href="/bills">Stored Invoices</a>
+          <a class="dropdown-item btn-outline-warning" href="/contactview">Contact Us Records</a>
+        </div>
+      </li>
+      {% endif %}
+       {% if user.is_authenticated and not user.is_staff  %}
+      <li class="nav-item">
+        <a class="nav-link btn-outline-warning " href="/bills">Invoices</a>
+        </li>
+        {% endif %}
+         
+       {% if user.is_authenticated %}
+
+      <li class="nav-item">
+        <a class="nav-link btn-outline-warning " href="/logout">Logout</a>
+        </li>
+        {% else %}
+      <li class="nav-item {% block login %}{% endblock %}">
+        <a class="nav-link btn-outline-warning" href="/login">Login</a>
+      </li>
+      <li class="nav-item {% block register %}{% endblock %}">
+        <a class="nav-link btn-outline-warning " href="/register">Register</a>
+      </li>
+      {% endif %}
+      
+    </ul>
+  </div>
+</nav>
+    
+
+
+    {% block body %} {% endblock %}
+
+<style>
+  li,p,h3{
+    color: rgb(236, 231, 231);
+    font-weight: bold;
+  }
+
+  #img{
+    background:linear-gradient(rgb(32, 32, 31),rgb(31, 31, 29));
+}
+</style>
+
+    <div id="img" >
+  <div class=" text container  p-2">
+   <hr class=" bg-black"> 
+   <div class="row footer  ">
+    <div class="col-lg-4 col-md-4 col-xs-12">
+      <div class="widget clearfix">
+        <div>
+          <h3>About Us</h3>
+          <hr>
+        </div>
+        <p> Daddy's Garage established for automotive maintenance, customers can truly Reliable and follow his passion to take care
+        of vehicle by providing excellent services. </p>
+          <hr>
+        <div >
+          <ul id="social">
+            <li class="p-2 mx-1"><a href="https://www.facebook.com/Ashwin.m.kanojia/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li class="p-2 mx-1"><a href="https://twitter.com/Ashwin697" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li class="p-2 mx-1"><a href="https://instagram.com/ashwin_697" target="_blank"><i class="fa fa-instagram"></i></a></li>
+    
+          </ul><!-- end links -->
+        </div>
+      </div><!-- end clearfix -->
+    </div><!-- end col -->
+
+
+
+  <div class="col-lg-4 col-md-4 col-xs-12">
+    <div >
+      <div >
+        <h3>Quick Links</h3>
+        <hr>
+      </div>
+      <ul style="list-style-type:none;" >
+        <li><a href="/">Home</a></li>
+        <hr>
+        <li><a href="/serviceabout">Service</a></li>
+        <hr>
+        <li><a href="/about">About Us</a></li>
+        <hr>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul><!-- end links -->
+    </div><!-- end clearfix -->
+  </div><!-- end col -->
+
+
+
+    <div class="col-lg-4 col-md-4 col-xs-12">
+      <div >
+        <div >
+          <h3>Contact Details</h3>
+          <hr>
+        </div>
+    
+        <ul style="list-style-type:none;">
+          
+          <li>Email Us : <a href="mailto:kanojiaashwin18@gmail.com">kanojiaashwin18@gmail.com</a></li>
+          <hr>
+         
+          <li>Locate Us : Manohar Compound, Near Maharashtra Weight Bridge, L.B.S. Marg, Kurla(W), Mumbai-400070 </li>
+          <hr>
+          <li>Call Us : <a href="tel:+919819278195">+91 98 19 278195</a></li>
+        </ul><!-- end links -->
+      </div><!-- end clearfix -->
+    </div><!-- end col -->
+   </div>
+   </div>
+   
+   </div>
+    <!---footer-wrapper--->
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+{% extends 'base.html' %} 
+
+{% block title %}Register{% endblock %}
+{% block register %}active{% endblock %}
+
+
+{% block body %} 
+
+<style>
+  h2,h3,label{
+    color: rgb(15, 15, 1);
+    font-weight: bold;
+  }
+</style>
+
+
+
+
+<div class="parallax" style='background-image :url("static/images/register.jpg");'>
+
+
+{% for message in messages %}
+<div
+  class="alert alert-{{message.tags}} alert-dismissible fade show"
+  role="alert"
+>
+  <strong>Message:</strong>{{message}}
+  <button
+    type="button"
+    class="close rounded"
+    data-dismiss="alert"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+
+
+
+
+
+<div class="container my-2">
+  <div class="row justify-content-center">
+    <div class="title col-12 col-lg-8">
+      <h2 style="font-weight: bold;" class="mbr-section-title align-center pb-3 mbr-fonts-style display-4">
+        Register Here
+      </h2>
+      <h3 style="color: black;">To Use our Service</h3>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="media-container-column col-lg-8" data-form-type="formoid">
+      <hr />
+
+      <form class="mbr-form" action="/register" method="post" data-form-title="Mobirise Form">
+        {% csrf_token %}
+        <div class="row row-sm-offset">
+          <div class="col-md-6 multi-horizontal" data-for="userid">
+            <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="userid-form1-4">Username</label>
+              <input type="text" class="form-control" name="userid" data-form-field="userid" required placeholder="username"
+                id="userid" />
+            </div>
+          </div>
+
+         <div class="col-md-6 multi-horizontal" data-for="useremail">
+            <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="useremail-form1-4">Email</label>
+              <input type="email" class="form-control" name="useremail" data-form-field="useremail" required placeholder="Email"
+                id="useremail" />
+            </div>
+          </div>
+
+          <div class="col-md-6 multi-horizontal" data-for="username">
+            <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="username-form1-4">First Name</label>
+              <input type="text" class="form-control" name="username" data-form-field="username" required placeholder="First Name"
+                id="username" />
+            </div>
+          </div>
+          <div class="col-md-6 multi-horizontal" data-for="userlastname">
+            <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="userlastname-form1-4">Last Name</label>
+              <input type="text" class="form-control" name="userlastname" data-form-field="userlastname" required placeholder="Last name"
+                id="userlastname" />
+            </div>
+          </div>
+         
+          <div class="col-md-6 multi-horizontal" data-for="password">
+            <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="password-form1-4">Password</label>
+              <input type="password" class="form-control" name="userpassword" data-form-field="password" required placeholder="Password"
+                id="userpassword" />
+            </div>
+          </div>
+          <div class="col-md-6 multi-horizontal" data-for="password">
+            <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="password-form1-4"> Confirm Password</label>
+              <input type="password" class="form-control" name="usercpassword" data-form-field="password" required placeholder=" Confirm Password"
+                id="usercpassword" />
+            </div>
+          </div>
+
+            
+
+          <span class="input-group-btn"><button type="submit" class="btn btn-form btn-outline-primary display-4 my-3 mx-3">
+              Register
+            </button></span>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+{% endblock %}

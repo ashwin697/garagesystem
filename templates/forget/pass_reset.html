@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+{% load static %}
+<div id="testimonials" class="parallax section db parallax-off"
+  style="background-image:url({% static 'images/bus2.jpg' %});">
+
+
+
+
+<div class="container my-2">
+  <div class="row justify-content-center">
+    <div class="title col-12 col-lg-8">
+<h1 class="mbr-section-title align-center pb-3 mbr-fonts-style display-4" style="color: yellow;">{{title}}</h1>
+<form class="md-form my-4" method='post'  > {% csrf_token %}
+<div class="form-group " style="color: yellow;">
+{{form}}<br>
+
+</div>
+<button class="btn btn-outline-warning" type='sumbit'>
+        Request for reset 
+</button>
+</form>
+<hr>
+
+</div>
+</div>
+</div>
+
+<style>
+
+#id_email {
+    display: block;
+    width: 70%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    
+}
+
+</style>
+</div>
+
+{% endblock %}

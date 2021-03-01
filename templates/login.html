@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}LoGin{% endblock %}
+{% block login %}active{% endblock %}
+
+{% block body %}
+
+<style>
+  h2,
+  h3,
+  label {
+    color: rgb(14, 14, 1);
+    font-weight: bold;
+  }
+</style>
+
+<div class="parallax" style='background-image :url("static/images/register.jpg");'>
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>Message:</strong>{{message}}
+  <button type="button" class="close rounded" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+<div class="container my-2">
+  <div class="row justify-content-center">
+    <div class="title col-12 col-lg-8">
+      <h2 style="font-weight: bold;" class="mbr-section-title align-center pb-3 mbr-fonts-style display-4" >
+        Log In Here 
+      </h2>
+      <h3 style="color: black;" >To Use our Service</h3>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="media-container-column col-lg-8" data-form-type="formoid">
+      <hr >
+      <hr >
+
+      <form class="mbr-form" action="/login" method="post" data-form-title="Mobirise Form">
+        {% csrf_token %}
+        <div class="row row-sm-offset">
+          <div class="col-md-6 multi-horizontal" data-for="loginusername">
+            <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="loginusername-form1-4" >Username</label>
+              <input type="text" class="form-control" name="loginusername" data-form-field="loginusername" required placeholder="Username"
+                id="loginusername" />
+            </div>
+          </div>
+          <div class="col-md-6 multi-horizontal" data-for="password">
+            <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="password-form1-4" >Password</label>
+              <input type="password" class="form-control" name="loginuserpassword" data-form-field="password" required placeholder="password"
+                id="loginuserpassword"  />
+            </div>
+          </div>
+        
+            
+
+          <span class="input-group-btn"><button type="submit" class="btn btn-form btn-warning display-4 my-3 mx-3">
+              Log Now
+            </button></span>
+            <a href="/reset_password" class="my-3 btn-danger btn">Forget Password?</a>
+          </div>
+      </form>
+      <hr>
+        <hr>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+{% endblock %}

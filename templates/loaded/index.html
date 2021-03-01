@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block home %}active{% endblock %}
+
+{% block body %}
+
+<style>
+
+#banner{
+    background-image: url(static/images/buss.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+
+}
+
+
+.banner-text{
+    text-align: center;
+    color: rgb(247, 244, 244);
+    padding-top: 180px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.banner-text h2{
+    font-size: 115px;
+    font-style: italic;
+}
+
+.banner-text p{
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.banner-btn{
+    margin: 70px auto 0;
+}
+.banner-btn a{
+    width: 150px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 12px 0;
+    color: blanchedalmond;
+    border: .5px solid white;
+    z-index: 1;
+    position: relative;
+    transition: color 0.5s;
+}
+.banner-btn a span{
+    width: 0;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: white;
+    z-index: -1;
+    transition: 0.5s;
+}
+.banner-btn a:hover span{
+    width: 100%;
+}
+.banner-btn a:hover{
+    color: black;
+}
+
+</style>
+
+    <section id="banner">
+        <div class="banner-text">
+          <h2>Daddy's Garage</h2>
+          <p>SPL. IN:TATA, LEYLAND, EICHER & ALL DIESEL VECHICLES</p>  
+            <div class="banner-btn">
+                <a href="/service"><span></span>Book Appointement</a>
+                <a href="/about"><span></span>About Us</a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

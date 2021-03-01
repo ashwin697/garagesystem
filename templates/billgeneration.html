@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% block title %}Bill-Generation and Future Recomaddation{% endblock %}
+
+
+
+
+
+{% block body %}
+
+
+
+
+
+
+<div class="parallax" style='background-image :url("static/images/table.jpg");'>
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong>{{message}}
+    <button type="button" class="close rounded" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+
+<div class="container my-2">
+    <div class="row justify-content-center">
+        <div class="title col-12 col-lg-8">
+            <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-5"
+                style="color:black;font-weight:bold;">
+                INVOICE
+            </h2>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="media-container-column col-lg-8" data-form-type="formoid">
+            <hr />
+
+            <form class="mbr-form" action="/billgeneration" method="post" data-form-title="Mobirise Form">
+                {% csrf_token %}
+                <div class="row row-sm-offset">
+                    <div class="col-md-4 multi-horizontal" data-for="name">
+                        <div class="form-group">
+                            <label class="form-control-label mbr-fonts-style display-7" for="name-form1-4">Appointement
+                                no</label>
+                            <input type="number" class="form-control" name="baptid" data-form-field="baptid" required
+                                placeholder="Appointement id" id="baptid" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 multi-horizontal" data-for="bemail">
+                        <div class="form-group">
+                            <label class="form-control-label mbr-fonts-style display-7"
+                                for="email-form1-4">Email</label>
+                            <input type="email" class="form-control" name="bemail" data-form-field="Email" required
+                                placeholder="Email address " id="bemail" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 multi-horizontal" data-for="bphone">
+                        <div class="form-group">
+                            <label class="form-control-label mbr-fonts-style display-7"
+                                for="phone-form1-4">Phone</label>
+                            <input type="tel" class="form-control" name="bphone" data-form-field="Phone" id="bphone"
+                                placeholder="Phone no " />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group my-2" data-for="message">
+                    <table class="table table-responsive-lg table-sm  table-responsive-md table-hover table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">work Done</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+
+{% for i in range %}
+    <tr>
+      <td class="text-break "><input type="text" class="form-control" name="workdone{{i}}" data-form-field="workdone" 
+                            placeholder="workdone " value='-' id="workdone{{i}}" /></td>
+      <td><input type="number" class="form-control" name="wamount{{i}}" data-form-field="wamount" 
+                        placeholder="Amount for work " value=0 id="wamount{{i}}" /></td>
+    </tr>
+    {% endfor %}
+   
+     </tbody>
+</table>
+                </div>
+
+                <div class="form-group my-2" data-for="message">
+                    <label class="form-control-label mbr-fonts-style display-7" for="message-form1-4">Work to be Done in
+                        Future</label>
+                    <textarea type="text" class="form-control" name="futurework" rows="7" data-form-field="Message"
+                        placeholder="Work's to be done in future " id="futurework"
+                        style="margin-top: 0px; margin-bottom: 0px; height: 89px;"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 multi-horizontal" data-for="name">
+                    <div class="form-group">
+                        <label class="form-control-label mbr-fonts-style display-7" for="name-form1-4">UserId </label>
+                        <input type="text" class="form-control" name="userid" data-form-field="userid" required
+                            placeholder="UserId " id="userid" />
+                    </div>
+                    </div>
+
+                <div class="col-md-4 multi-horizontal" data-for="name">
+                <div class="form-group">
+                    <label class="form-control-label mbr-fonts-style display-7" for="name-form1-4">Customer name </label>
+                    <input type="text" class="form-control" name="bname" data-form-field="bname" required
+                        placeholder="Customer Name" id="bname" />
+                </div>
+                </div>
+
+                <div class="col-md-4 multi-horizontal" data-for="name">
+                <div class="form-group">
+                    <label class="form-control-label mbr-fonts-style display-7" for="name-form1-4">Vehicle no</label>
+                    <input type="text" class="form-control" name="busno" data-form-field="busno" required
+                        placeholder="Vehicle no.." id="busno" />
+                </div>
+                </div>
+
+                <!-- <div class="col-md-4 multi-horizontal" data-for="name">
+                <div class="form-group">
+                    <label class="form-control-label mbr-fonts-style display-7" for="name-form1-4">Total Amount </label>
+                    <input type="number" class="form-control" name="billamount" data-form-field="billamount" required
+                        placeholder="Amount for work " id="billamount" />
+                </div>
+                </div> -->
+
+
+
+
+                <div class="col-md-4 my-2 multi-horizontal" data-for="name">
+                <span class="input-group-btn"></span><button type="submit"
+                        class="btn btn-form btn-outline-success display-4 my-4">
+                        Generate Bill
+                    </button></span>
+                </div>
+                </div>
+                <hr>
+            </form>
+            <hr>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+{% endblock %}

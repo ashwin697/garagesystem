@@ -1,0 +1,2 @@
+pip install xhtml2pdf
+pip install django
