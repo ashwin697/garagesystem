@@ -13,6 +13,7 @@ from django.core.paginator import Paginator
 from xhtml2pdf import pisa
 from io import BytesIO
 from datetime import datetime
+import time
 # Create your views here.
 
 import json
