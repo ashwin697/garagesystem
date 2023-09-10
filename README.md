@@ -33,9 +33,6 @@ Book appoinment page :
 
 ![Screenshot from 2021-03-01 22-09-46](https://user-images.githubusercontent.com/58857306/109528622-e518d080-7ada-11eb-99ce-aa4087e3043f.png)
 
-appoinment confirmation mail :
-
-![Screenshot from 2021-03-01 22-10-39](https://user-images.githubusercontent.com/58857306/109528788-0bd70700-7adb-11eb-95f1-09db548a06d1.png)
 
 generated invoice :
 
